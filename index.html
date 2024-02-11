@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Flashcards</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            width: 80%;
+            max-width: 600px; /* Limiting maximum width for better readability */
+            margin: 0 auto; /* Centering the container */
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .section {
+            margin-bottom: 30px;
+        }
+        .section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            border-bottom: 2px solid #ccc;
+            padding-bottom: 5px;
+        }
+        .card {
+            width: 100%;
+            max-width: 300px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            overflow: hidden;
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+        .card:hover {
+            transform: scale(1.05);
+        }
+        .card .content {
+            padding: 20px;
+        }
+        .card h2 {
+            margin-top: 0;
+            font-size: 1.5rem;
+        }
+        .card p {
+            margin: 10px 0;
+            font-size: 1rem;
+        }
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+        .overlay.active {
+            display: flex;
+        }
+        .modal {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            max-width: 90%;
+            max-height: 90%;
+            overflow-y: auto;
+        }
+        .modal button {
+            margin-top: 10px;
+            padding: 8px 20px;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <section class="section">
+            <h2>Coffee</h2>
+            <div class="card" onclick="showModal('Coffee Recipe 1', 'Description of Coffee Recipe 1.')">
+                <div class="content">
+                    <h2>Coffee Recipe 1</h2>
+                    <p>Description of Coffee Recipe 1.</p>
+                </div>
+            </div>
+            <div class="card" onclick="showModal('Coffee Recipe 2', 'Description of Coffee Recipe 2.')">
+                <div class="content">
+                    <h2>Coffee Recipe 2</h2>
+                    <p>Description of Coffee Recipe 2.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2>Frappe</h2>
+            <div class="card" onclick="showModal('Frappe Recipe 1', 'Description of Frappe Recipe 1.')">
+                <div class="content">
+                    <h2>Frappe Recipe 1</h2>
+                    <p>Description of Frappe Recipe 1.</p>
+                </div>
+            </div>
+            <div class="card" onclick="showModal('Frappe Recipe 2', 'Description of Frappe Recipe 2.')">
+                <div class="content">
+                    <h2>Frappe Recipe 2</h2>
+                    <p>Description of Frappe Recipe 2.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Milk Tea</h2>
+            <div class="card" onclick="showModal('Milk Tea Recipe 1', 'Description of Milk Tea Recipe 1.')">
+                <div class="content">
+                    <h2>Milk Tea Recipe 1</h2>
+                    <p>Description of Milk Tea Recipe 1.</p>
+                </div>
+            </div>
+            <div class="card" onclick="showModal('Milk Tea Recipe 2', 'Description of Milk Tea Recipe 2.')">
+                <div class="content">
+                    <h2>Milk Tea Recipe 2</h2>
+                    <p>Description of Milk Tea Recipe 2.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Fruit Soda</h2>
+            <div class="card" onclick="showModal('Fruit Soda Recipe 1', 'Description of Fruit Soda Recipe 1.')">
+                <div class="content">
+                    <h2>Fruit Soda Recipe 1</h2>
+                    <p>Description of Fruit Soda Recipe 1.</p>
+                </div>
+            </div>
+            <div class="card" onclick="showModal('Fruit Soda Recipe 2', 'Description of Fruit Soda Recipe 2.')">
+                <div class="content">
+                    <h2>Fruit Soda Recipe 2</h2>
+                    <p>Description of Fruit Soda Recipe 2.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div class="overlay" id="overlay" onclick="hideModal()">
+        <div class="modal">
+            <h2 id="modal-title"></h2>
+            <p id="modal-description"></p>
+            <button onclick="hideModal()">Return to Home</button>
+        </div>
+    </div>
+
+    <script>
+        function showModal(title, description) {
+            document.getElementById('modal-title').innerText = title;
+            document.getElementById('modal-description').innerText = description;
+            document.getElementById('overlay').classList.add('active');
+        }
+
+        function hideModal() {
+            document.getElementById('overlay').classList.remove('active');
+        }
+    </script>
+</body>
+</html>
