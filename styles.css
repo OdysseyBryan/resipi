@@ -87,6 +87,7 @@ body {
 }
 
 .modal {
+    font-size: 1.1rem;
     background-color: #F8F8FF;
     border-radius: 8px;
     padding: 20px;
