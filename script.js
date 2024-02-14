@@ -6,7 +6,14 @@ function showModal(title, description) {
 
 function hideModal() {
     document.getElementById('overlay').classList.remove('active');
+    document.getElementById('searchInput').focus(); 
 }
+
+document.getElementById('overlay').addEventListener('click', function(event) {
+    if (event.target === this) {
+        hideModal();
+    }
+});
 
 function searchRecipes() {
     var input, filter, sections, cards, i, txtValue, sectionEmpty;
@@ -47,3 +54,10 @@ cards.forEach(function(card) {
     });
 });
 
+window.onload = function() {
+    document.getElementById('searchInput').focus();
+};
+
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('searchInput').focus();
+});
