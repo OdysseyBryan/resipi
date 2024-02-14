@@ -36,6 +36,7 @@
             margin-bottom: 20px;
             overflow: hidden;
             transition: transform 0.3s;
+            cursor: pointer;
         }
         .card:hover {
             transform: scale(1.05);
@@ -106,7 +107,7 @@
             <div class="card" data-category="coffee">
                 <div class="content">
                     <h2>(L) Latte</h2>
-                    <p>Coffee - 60ml</p>
+                    <p>Coffee - 70ml</p>
                     <p>Milk - 40ml</p>
                     <p>Tube Ice - Full</p>
                 </div>
@@ -122,8 +123,8 @@
             <div class="card" data-category="coffee">
                 <div class="content">
                     <h2>(CM) Caramel Macchiato</h2>
-                    <p>Vanilla Syrup - 2 times</p>
-                    <p>Sweetener - 1x</p>
+                    <p>Vanilla Syrup - 2 pump</p>
+                    <p>Sweetener - 1 pump</p>
                     <p>Milk - 40ml / 5 times</p>
                     <p>Tube Ice - Full</p>
                     <p>Coffee - 60ml</p>
@@ -143,8 +144,8 @@
             <div class="card" data-category="coffee">
                 <div class="content">
                     <h2>(FV) French Vanilla</h2>
-                    <p>French Vanilla Syrup - 2 times</p>
-                    <p>Sweetener - 1 times</p>
+                    <p>French Vanilla Syrup - 2 pump</p>
+                    <p>Sweetener - 1 pump</p>
                     <p>Coffee - 60ml</p>
                     <p>Tube Ice - Full</p>
                     <p>Milk - 40ml / 5 times</p>
@@ -163,8 +164,8 @@
             <div class="card" data-category="coffee">
                 <div class="content">
                     <h2>(VL) Vanilla Latte</h2>
-                    <p>Vanilla Syrup - 40ml</p>
-                    <p>Sweetener - 1 time</p>
+                    <p>Vanilla Syrup - 1 pump</p>
+                    <p>Sweetener - 1 pump</p>
                     <p>Milk - 40ml / 5 times</p>
                     <p>Tube Ice - Full</p>
                     <p>Coffee - 60ml</p>
@@ -199,17 +200,6 @@
         
         <section class="section" id="frappeSection">
             <h2>Frappe</h2>
-            <div class="card" data-category="frappe">
-                <div class="content">
-                    <h2>(CHF) Chocolate Frappe</h2>
-                    <p>(In Blender) Water - 40ml / 4 times</p>
-                    <p>Chocolate Powder - 2 times</p>
-                    <p>Creamer - 2 times</p>
-                    <p>Crushed Ice - 1 and half cup</p>
-                    <p>Blend</p>
-                    <p>Chocolate Drizzle - On sides</p>
-                </div>
-            </div>
             <div class="card" data-category="frappe">
                 <div class="content">
                     <h2>(CHF) Chocolate Frappe</h2>
@@ -402,9 +392,29 @@
                 </div>
             </div>
         </section>
-    </div>  
+
+    <div class="overlay" id="overlay" onclick="hideModal()">
+        <div class="modal">
+            <h2 id="modal-title"></h2>
+            <p id="modal-description"></p>
+            <button onclick="hideModal()">Return to Home</button>
+        </div>
+    </div>
 
     <script>
+        // Function to show modal with card content
+        function showModal(title, description) {
+            document.getElementById('modal-title').innerText = title;
+            document.getElementById('modal-description').innerText = description;
+            document.getElementById('overlay').classList.add('active');
+        }
+
+        // Function to hide modal
+        function hideModal() {
+            document.getElementById('overlay').classList.remove('active');
+        }
+
+        // Function to search recipes
         function searchRecipes() {
             var input, filter, sections, cards, i, txtValue, sectionEmpty;
             input = document.getElementById('searchInput');
@@ -433,6 +443,16 @@
                 }
             });
         }
+
+        // Add click event listeners to all cards
+        var cards = document.querySelectorAll('.card');
+        cards.forEach(function(card) {
+            card.addEventListener('click', function() {
+                var title = this.querySelector('h2').innerText;
+                var description = this.querySelector('.content').innerText;
+                showModal(title, description);
+            });
+        });
     </script>
 </body>
 </html>
