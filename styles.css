@@ -41,6 +41,8 @@ body {
     overflow: hidden;
     transition: transform 0.3s;
     cursor: pointer;
+    -webkit-tap-highlight-color: transparent; /* For Webkit browsers */
+    tap-highlight-color: transparent; /* For other browsers */
 }
 
 .card:focus {
