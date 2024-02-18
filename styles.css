@@ -43,6 +43,10 @@ body {
     cursor: pointer;
 }
 
+.card:focus {
+    outline: none;
+}
+
 .card:hover {
     transform: scale(1.05);
 }
