@@ -6,6 +6,7 @@ function showModal(title, description) {
 
 function hideModal() {
     document.getElementById('overlay').classList.remove('active');
+    document.getElementById('searchInput').value = ''; 
     document.getElementById('searchInput').focus(); 
 }
 
